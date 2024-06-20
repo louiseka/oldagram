@@ -16,9 +16,15 @@ body {
     font-weight: 700;
 }
 
-
-
 /*Layout*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px 10px 5px;
+    border-bottom: 1px solid #C6C6C6;
+}
+
 .container {
     max-width: 600px;
     margin: 0 auto;
@@ -36,13 +42,6 @@ body {
 }
 
 /*Images*/
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 5px 10px 5px;
-    border-bottom: 1px solid #C6C6C6;
-}
 
 .logo {
     max-width: 200px;
