@@ -35,32 +35,127 @@ const postsEl = document.getElementById("posts-el")
 
 //Create function to make post
 
+function makeSection() {
+    return document.createElement('section')
+}
+
+
+function makeImage(src, alt, className) {
+    const image = document.createElement('img')
+    image.src = src
+    if (alt) { image.alt = alt }
+    if (className) { image.classList.add(className) }
+    return image
+}
+
+function makeIcons() {
+    const iconContainer = document.createElement('div')
+    iconContainer.classList.add("icons")
+    const heart = makeImage("./Assets/icon-heart.png")
+    const comment = makeImage("./Assets/icon-comment.png")
+    const dm = makeImage("./Assets/icon-comment.png")
+    iconContainer.appendChild(heart)
+    iconContainer.appendChild(comment)
+    iconContainer.appendChild(dm)
+    return iconContainer
+}
+
+function makeAuthorDetails(userName, userLocation) {
+
+    const name = document.createElement('p')
+    name.classList.add('bold-small-text')
+    name.textContent = userName
+
+    const location = document.createElement('p')
+    location.classList.add('small-text')
+    location.textContent = userLocation
+
+    const authorContainer = document.createElement('div')
+    authorContainer.appendChild(name)
+    authorContainer.appendChild(location)
+
+    return authorContainer
+}
+
+function makeUserDetails(authorDetails, userAvatar) {
+    const userDetailsContainer = document.createElement('div')
+    userDetailsContainer.classList.add('user-details')
+    userDetailsContainer.appendChild(userAvatar)
+    userDetailsContainer.appendChild(authorDetails)
+    return userDetailsContainer
+}
+
+function makeCaptionDetails(postLikes, userName, postComment) {
+
+    const likes = document.createElement('p')
+    likes.classList.add('bold-small-text')
+    likes.textContent = postLikes
+
+    const comment = document.createElement('p')
+    comment.classList.add('small-text')
+    const text = document.createTextNode(postComment)
+
+    const name = document.createElement('span')
+    name.classList.add('bold-small-text')
+    name.textContent = userName + ' '
+
+    comment.appendChild(name)
+    comment.appendChild(text)
+
+    const captionContainer = document.createElement('div')
+    captionContainer.classList.add('caption-details')
+    captionContainer.appendChild(likes)
+    captionContainer.appendChild(comment)
+    return captionContainer
+}
+
+
+
 function makePost(postDetails) {
-    return `
-    <section>
-        <div class="user-details"> 
-            <img class="user-avatar" src="${postDetails.avatar}" 
-                alt="Profile image of ${postDetails.name}">
-        
-            <div>
-                <p class="bold-small-text"> ${postDetails.name}</p>
-                <p class="small-text"> ${postDetails.location}</p>
-            </div>
-        </div>
-        <img class="instagram-picture" src="${postDetails.post}" 
-            alt="A portrait painting of ${postDetails.name}">
-        <div class="icons">
-            <img src="./Assets/icon-heart.png">
-            <img src="./Assets/icon-comment.png">
-            <img src="./Assets/icon-dm.png">
-        </div>
-        <div class="caption-details">
-            <p class="bold-small-text"> ${postDetails.likes} likes </p>
-            <p class="small-text"> <span class="bold-small-text"> ${postDetails.username}</span> 
-                ${postDetails.comment}</p>
-        </div>
-    </section>
-    `
+
+    const userAvatar = makeImage(postDetails.avatar, `Profile image of ${postDetails.name}`, "user-avatar")
+    const authorDetails = makeAuthorDetails(postDetails.name, postDetails.location)
+    const userDetails = makeUserDetails(authorDetails, userAvatar)
+
+    const instagramPicture = makeImage(postDetails.post, `A portrait painting of ${postDetails.name}`, "instagram-picture")
+
+    const icons = makeIcons()
+
+    const captionDetails = makeCaptionDetails(`${postDetails.likes} likes`, postDetails.username, postDetails.comment)
+
+    const section = makeSection()
+    section.appendChild(userDetails);
+    section.appendChild(instagramPicture);
+    section.appendChild(icons);
+    section.appendChild(captionDetails);
+
+    return section;
+
+    // return `
+    // <section>
+    //     <div class="user-details"> 
+    //         <img class="user-avatar" src="${postDetails.avatar}" 
+    //             alt="Profile image of ${postDetails.name}">
+
+    //         <div>
+    //             <p class="bold-small-text"> ${postDetails.name}</p>
+    //             <p class="small-text"> ${postDetails.location}</p>
+    //         </div>
+    //     </div>
+    //     <img class="instagram-picture" src="${postDetails.post}" 
+    //         alt="A portrait painting of ${postDetails.name}">
+    //     <div class="icons">
+    //         <img src="./Assets/icon-heart.png">
+    //         <img src="./Assets/icon-comment.png">
+    //         <img src="./Assets/icon-dm.png">
+    //     </div>
+    //     <div class="caption-details">
+    //         <p class="bold-small-text"> ${postDetails.likes} likes </p>
+    //         <p class="small-text"> <span class="bold-small-text"> ${postDetails.username}</span> 
+    //             ${postDetails.comment}</p>
+    //     </div>
+    // </section>
+    // `
 }
 
 //Create for loop
@@ -68,7 +163,7 @@ function makePost(postDetails) {
 let postsHtml = ""
 for (let i = 0; i < posts.length; i++) {
     const postDetails = posts[i]
-    postsHtml += makePost(postDetails)
+    postsEl.appendChild(makePost(postDetails))
 }
 
-postsEl.innerHTML = postsHtml
+// postsEl.innerHTML = postsHtml
