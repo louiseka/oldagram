@@ -8,7 +8,8 @@ body {
 .small-text,
 .bold-small-text {
     margin: 0;
-    font-size: 14px;
+    font-size: 0.875rem;
+    /* 14px */
     color: #000;
 }
 
@@ -21,7 +22,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 5px 10px 5px;
+    padding: 0.32em 0.32em 0.625em;
     border-bottom: 1px solid #C6C6C6;
 }
 
@@ -34,11 +35,11 @@ header {
 .user-details {
     display: flex;
     align-items: center;
-    margin: 10px 0 10px 0;
+    margin: 0.625em 0;
 }
 
 .caption-details {
-    padding: 5px 0 50px 20px;
+    padding: 0.32em 0 3.15em 1.25em;
 }
 
 /*Images*/
@@ -46,7 +47,7 @@ header {
 .logo {
     max-width: 200px;
     width: auto;
-    margin: 0 0 0 10px;
+    margin: 0 0 0 0.625em;
 }
 
 .user-avatar {
@@ -55,7 +56,6 @@ header {
     height: auto;
     width: auto;
     border-radius: 50%;
-    margin: 0 10px 0px 20px;
 }
 
 .instagram-picture {
@@ -64,9 +64,10 @@ header {
 
 .icons img {
     max-width: 30px;
-    margin: 5px 5px;
+    margin: 0.32em;
 }
 
-.icons {
-    margin: 0 10px 0px 20px;
+.icons,
+.user-avatar {
+    margin: 0 0.625em 0 1.25em;
 }
