@@ -130,32 +130,6 @@ function makePost(postDetails) {
     section.appendChild(captionDetails);
 
     return section;
-
-    // return `
-    // <section>
-    //     <div class="user-details"> 
-    //         <img class="user-avatar" src="${postDetails.avatar}" 
-    //             alt="Profile image of ${postDetails.name}">
-
-    //         <div>
-    //             <p class="bold-small-text"> ${postDetails.name}</p>
-    //             <p class="small-text"> ${postDetails.location}</p>
-    //         </div>
-    //     </div>
-    //     <img class="instagram-picture" src="${postDetails.post}" 
-    //         alt="A portrait painting of ${postDetails.name}">
-    //     <div class="icons">
-    //         <img src="./Assets/icon-heart.png">
-    //         <img src="./Assets/icon-comment.png">
-    //         <img src="./Assets/icon-dm.png">
-    //     </div>
-    //     <div class="caption-details">
-    //         <p class="bold-small-text"> ${postDetails.likes} likes </p>
-    //         <p class="small-text"> <span class="bold-small-text"> ${postDetails.username}</span> 
-    //             ${postDetails.comment}</p>
-    //     </div>
-    // </section>
-    // `
 }
 
 //Create for loop
